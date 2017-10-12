@@ -1,0 +1,11 @@
+{
+  "/api/": {
+    "target": "https://cosmic-cosmetics.herokuapp.com/",
+    "secure": false,
+    "changeOrigin": true,
+    "logLevel": "debug",
+    "pathRewrite": {
+      "^/api/": ""
+    }
+  }
+}

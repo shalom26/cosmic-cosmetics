@@ -1,0 +1,58 @@
+<div class="login-container">
+  <div #mainBox class="ba-auth-box">
+    <!--Header text-->
+    <h2>Login</h2>
+
+    <!--Validation form-->
+    <form class="ba-auth-form"
+          (ngSubmit)="login(formGroup.value)"
+          #activateForm
+          [formGroup]="formGroup"
+          (keypress.enter)="login(formGroup.value)">
+      <!--Input fields-->
+      <div class="fields-container">
+        <!--Explanation text-->
+        <label>
+          Please enter email & password
+        </label>
+
+        <!--Email-->
+        <input id="email" name="email" type="text" formControlName="email"
+               class="form-control"
+               [ngClass]="{'ba-auth-has-error': emailError}"
+               placeholder="Email address">
+        <!--Error message-->
+        <div class="err-msg">
+          <section>Please insert a valid email</section>
+        </div>
+
+        <!--Password-->
+        <input id="password"
+               name="password"
+               type="password"
+               formControlName="password"
+               class="form-control"
+               placeholder="Password"
+        >
+
+        <!--Error message-->
+        <!--<div class="err-msg"-->
+             <!--[@enterAnimation]="submitErr">-->
+          <!--<section>{{submitErrTxt}}</section>-->
+        <!--</div>-->
+      </div>
+
+      <!--Submit-->
+      <button class="ba-btn submit" type="submit" [disabled]="formGroup.invalid">
+        <section *ngIf="!isPending">Sign In</section>
+      </button>
+    </form>
+
+  </div>
+
+  <!--Links-->
+  <div class="footer-container">
+    <!--<a [routerLink]="forgotPasswordUrl">Forgot your password?</a>-->
+  </div>
+
+</div>
