@@ -1,4 +1,15 @@
-import { Component, OnInit } from '@angular/core';
+import {Component, OnInit} from '@angular/core';
+import {DataService} from "../server/data-service.service";
+
+export interface IService {
+  album: string
+  brand_id: string
+  duration_in_minutes: number
+  icon_name: string
+  id: { $oid: string }
+  price: number
+  service_name: string
+}
 
 @Component({
   selector: 'app-services',
@@ -6,10 +17,32 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./services.component.scss']
 })
 export class ServicesComponent implements OnInit {
+  public rows: IService[];
+  public editing = [];
 
-  constructor() { }
+  constructor(private dataService: DataService) {
+  }
 
   ngOnInit() {
+    this.dataService.getServices().subscribe((res) => {
+      console.log('services', res);
+      this.rows = res;
+    })
+
+  }
+
+  updateValue(event, cell, rowIndex) {
+    console.log('inline editing rowIndex', rowIndex);
+    this.editing[rowIndex + '-' + cell] = false;
+    this.rows[rowIndex][cell] = event.target.value;
+    this.rows = [...this.rows];
+    this.dataService.updateService(this.rows[rowIndex]).subscribe();
+  }
+
+  addService() {
+    this.dataService.addService().subscribe(res=>{
+      this.rows.push(res);
+    });
   }
 
 }

@@ -1,3 +1,85 @@
-<p>
-  services works!
-</p>
+<div class="services-container">
+  <div class="header">שרותים שלי</div>
+  <div class="services-table">
+    <ngx-datatable
+      #mydatatable
+      class="material"
+      [headerHeight]="50"
+      [limit]="5"
+      [columnMode]="'force'"
+      [footerHeight]="50"
+      [rowHeight]="'auto'"
+      [rows]="rows">
+      <ngx-datatable-column name="Name"  prop="service_name">
+        <ng-template ngx-datatable-cell-template let-rowIndex="rowIndex" let-value="value" let-row="row">
+            <span
+              title="Double click to edit"
+              (dblclick)="editing[rowIndex + '-name'] = true"
+              *ngIf="!editing[rowIndex + '-name']">
+              {{value}}
+            </span>
+          <input
+            autofocus
+            (blur)="updateValue($event, 'service_name', rowIndex)"
+            *ngIf="editing[rowIndex+ '-name']"
+            type="text"
+            [value]="value"
+          />
+        </ng-template>
+      </ngx-datatable-column>
+      <ngx-datatable-column name="Icon" prop="icon_name">
+        <ng-template ngx-datatable-cell-template let-rowIndex="rowIndex" let-value="value" let-row="row">
+            <span
+              title="Double click to edit"
+              (dblclick)="editing[rowIndex + '-icon'] = true"
+              *ngIf="!editing[rowIndex + '-icon']">
+              {{value}}
+            </span>
+          <input
+            autofocus
+            (blur)="updateValue($event, 'icon_name', rowIndex)"
+            *ngIf="editing[rowIndex+ '-icon']"
+            type="text"
+            [value]="value"
+          />
+        </ng-template>
+      </ngx-datatable-column>
+
+      <ngx-datatable-column name="Price">
+        <ng-template ngx-datatable-cell-template let-rowIndex="rowIndex" let-value="value" let-row="row">
+            <span
+              title="Double click to edit"
+              (dblclick)="editing[rowIndex + '-price'] = true"
+              *ngIf="!editing[rowIndex + '-price']">
+              {{value}}
+            </span>
+          <input
+            autofocus
+            (blur)="updateValue($event, 'price', rowIndex)"
+            *ngIf="editing[rowIndex+ '-price']"
+            type="text"
+            [value]="value"
+          />
+        </ng-template>
+      </ngx-datatable-column>
+      <ngx-datatable-column name="Duration" prop="duration_in_minutes">
+        <ng-template ngx-datatable-cell-template let-rowIndex="rowIndex" let-value="value" let-row="row">
+            <span
+              title="Double click to edit"
+              (dblclick)="editing[rowIndex + '-duration'] = true"
+              *ngIf="!editing[rowIndex + '-duration']">
+              {{value}}
+            </span>
+          <input
+            autofocus
+            (blur)="updateValue($event, 'duration_in_minutes', rowIndex)"
+            *ngIf="editing[rowIndex+ '-duration']"
+            type="text"
+            [value]="value"
+          />
+        </ng-template>
+      </ngx-datatable-column>
+    </ngx-datatable>
+  </div>
+  <button md-fab color="accent" (click)="addService()">+</button>
+</div>
