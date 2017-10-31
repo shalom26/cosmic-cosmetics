@@ -10,7 +10,7 @@
       [footerHeight]="50"
       [rowHeight]="'auto'"
       [rows]="rows">
-      <ngx-datatable-column name="Name"  prop="service_name">
+      <ngx-datatable-column name="Name" prop="service_name">
         <ng-template ngx-datatable-cell-template let-rowIndex="rowIndex" let-value="value" let-row="row">
             <span
               title="Double click to edit"
@@ -29,19 +29,21 @@
       </ngx-datatable-column>
       <ngx-datatable-column name="Icon" prop="icon_name">
         <ng-template ngx-datatable-cell-template let-rowIndex="rowIndex" let-value="value" let-row="row">
-            <span
-              title="Double click to edit"
-              (dblclick)="editing[rowIndex + '-icon'] = true"
-              *ngIf="!editing[rowIndex + '-icon']">
-              {{value}}
-            </span>
-          <input
-            autofocus
-            (blur)="updateValue($event, 'icon_name', rowIndex)"
-            *ngIf="editing[rowIndex+ '-icon']"
-            type="text"
-            [value]="value"
-          />
+          <ng2-dropdown>
+            <ng2-dropdown-button>
+              <div class="icon-container">
+                <img [src]="url + value" class="icon">
+              </div>
+            </ng2-dropdown-button>
+            <ng2-dropdown-menu>
+              <ng2-menu-item *ngFor="let icon of icons" (click)="selectIcon(icon,'icon_name',rowIndex)">
+                <!--Todo fix image size-->
+                <div class="icon-container">
+                  <img [src]="url + icon" class="icon">
+                </div>
+              </ng2-menu-item>
+            </ng2-dropdown-menu>
+          </ng2-dropdown>
         </ng-template>
       </ngx-datatable-column>
 

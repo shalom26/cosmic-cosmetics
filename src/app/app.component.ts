@@ -1,5 +1,6 @@
 import {Component, OnInit} from '@angular/core';
 import {DataService} from "./server/data-service.service";
+import {ActivatedRoute} from "@angular/router";
 
 @Component({
   selector: 'app-root',
@@ -8,6 +9,7 @@ import {DataService} from "./server/data-service.service";
 })
 export class AppComponent implements OnInit {
   public isLoggedIn = DataService.isLoggedIn;
+  public isData: boolean = false;
   public navLinks = [
     {
       link: 'calendar',
@@ -29,14 +31,19 @@ export class AppComponent implements OnInit {
   ];
 
 
-  constructor(private dataService: DataService) {
+  constructor(private dataService: DataService,private router:ActivatedRoute) {
   }
-
+  //Todo cancel nav bar on login page
   ngOnInit() {
+    this.router.url.subscribe(route=>{
+      console.log(route);
+    });
     //Get Brands
     this.dataService.getBrands().subscribe((res) => {
       //Set default brand
       this.dataService.setSelectedBrand(res[0]);
+      this.isData = true;
+
     })
   }
 

@@ -44,15 +44,49 @@ export class DataService {
       .map(res => res.json())
   }
 
+  getIcons(){
+    let url = URLS.baseApi + 'service_icon_list';
+    return this.authHttp.get(url).map((res)=>res.json())
+  }
+  //Employees
   getEmployees() {
     let url = URLS.baseApi + 'employees';
     return this.authHttp.get(url).map((res) => res.json())
+  }
+
+  addEmployee(){
+    let url = URLS.baseApi + 'employees';
+    let service = {brand_id:this.selectedBrand.id};
+    return this.authHttp.post(url,service).map((res) => res.json())
+  }
+
+  saveEmployee(emp){
+    let url = URLS.baseApi + 'employees' + '/' + emp.id.$oid;
+    return this.authHttp.put(url, emp).map((res) => res.json())
+  }
+
+  deleteEmployee(emp){
+    let url = URLS.baseApi + 'employees' + '/' + emp.id.$oid;
+    return this.authHttp.delete(url).map((res) => res.json())
   }
 
   getClinets() {
     let url = URLS.baseApi + 'clients';
     return this.authHttp.get(url).map((res) => res.json())
   }
+
+  addClient() {
+    let url = URLS.baseApi + 'clients';
+    let service = {brand_id:this.selectedBrand.id};
+    return this.authHttp.post(url, service).map((res) => res.json())
+  }
+
+  updateClient(client) {
+    let url = URLS.baseApi + 'clients' + '/' + client.id.$oid;
+    return this.authHttp.put(url, client).map((res) => res.json())
+  }
+
+
 
   getBrands() {
     let url = URLS.baseApi + 'brands';

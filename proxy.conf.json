@@ -1,6 +1,6 @@
 {
   "/api/": {
-    "target": "http://192.168.1.6:3000/",
+    "target": "http://cosmic-cosmetics.herokuapp.com/",
     "secure": false,
     "changeOrigin": true,
     "logLevel": "debug",

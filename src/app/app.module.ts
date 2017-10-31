@@ -23,6 +23,7 @@ import {LoginComponent} from './login/login.component';
 import {AuthModule} from "./server/auth.module";
 import {ClientsComponent} from "./clients/clients.component";
 import { SettingsComponent } from './settings/settings.component';
+import {Ng2DropdownModule} from "ng2-material-dropdown";
 
 
 @NgModule({
@@ -52,9 +53,11 @@ import { SettingsComponent } from './settings/settings.component';
     NgbDatepickerModule.forRoot(),
     NgbTimepickerModule.forRoot(),
     CalendarModule.forRoot(),
-    NgxDatatableModule
+    NgxDatatableModule,
+    Ng2DropdownModule
 
-  ],
+
+],
   providers: [
     CalendarDateFormatter,
     CalendarUtils,

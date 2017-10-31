@@ -6,6 +6,7 @@ import {LoginComponent} from "./login/login.component";
 import {ClientsComponent} from "./clients/clients.component";
 import {SettingsComponent} from "./settings/settings.component";
 
+//Todo canActivate + get data
 
 export const routes: Routes = [
   {path: '', redirectTo: 'calendar', pathMatch: 'full'},
