@@ -1,6 +1,7 @@
 import {Component, OnInit} from '@angular/core';
 import {DataService} from "./server/data-service.service";
 import {ActivatedRoute} from "@angular/router";
+import {SharedService} from "./shared/services/shared.service";
 
 @Component({
   selector: 'app-root',
@@ -10,6 +11,7 @@ import {ActivatedRoute} from "@angular/router";
 export class AppComponent implements OnInit {
   public isLoggedIn = DataService.isLoggedIn;
   public isData: boolean = false;
+  public isNavBar: boolean = false;
   public navLinks = [
     {
       link: 'calendar',
@@ -31,13 +33,17 @@ export class AppComponent implements OnInit {
   ];
 
 
-  constructor(private dataService: DataService,private router:ActivatedRoute) {
+  constructor(private dataService: DataService,
+              private router: ActivatedRoute,
+              private sharedService: SharedService) {
   }
+
   //Todo cancel nav bar on login page
   ngOnInit() {
-    this.router.url.subscribe(route=>{
-      console.log(route);
-    });
+    //set SideBar state
+    this.sharedService.isNavBar$.subscribe(state => {
+      this.isNavBar = state;
+    })
     //Get Brands
     this.dataService.getBrands().subscribe((res) => {
       //Set default brand
