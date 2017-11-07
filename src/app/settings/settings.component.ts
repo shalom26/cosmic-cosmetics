@@ -1,6 +1,7 @@
 import {Component, OnInit} from '@angular/core';
 import {DataService, IBrand} from "../server/data-service.service";
 import {FormBuilder, FormGroup, Validators} from "@angular/forms";
+import {IService} from "../services/services.component";
 
 @Component({
   selector: 'app-settings',
@@ -12,7 +13,13 @@ export class SettingsComponent implements OnInit {
   formGroup: FormGroup;
   designFormGroup: FormGroup;
   public services = [];
-  public displayServiceName;
+  public displayServiceName:IService = {album: '',
+    brand_id: '',
+    duration_in_minutes: 0,
+    icon_name: '',
+    id: { $oid: '' },
+    price: 0,
+    service_name:'בחר שרות מהיר'};
 
 
   constructor(private dataService: DataService,
@@ -22,7 +29,12 @@ export class SettingsComponent implements OnInit {
   ngOnInit() {
     this.selectedBrand = this.dataService.getSelectedBrand();
 
-
+    this.dataService.getServices().subscribe((res) => {
+      this.services = [...res];
+      this.displayServiceName = res.filter(service => {
+        return service.id.$oid === this.selectedBrand.design.prime_service_id;
+      })[0];
+    });
 
     this.formGroup = this.fb.group({
       email: ['', Validators.compose([Validators.required])],
@@ -43,21 +55,8 @@ export class SettingsComponent implements OnInit {
       baseColor: [],
       btnText: [],
       primeService: []
-    })
-
-    this.dataService.getServices().subscribe(servicesList => {
-      console.log(servicesList);
-
-      this.services = servicesList;
-
-      this.displayServiceName = this.services.filter(service=>{
-        return service.id = this.selectedBrand.design.prime_service_id;
-      })[0]
     });
 
-
-
-    this.designFormGroup
   }
 
   onBrandFormSubmit() {
@@ -68,15 +67,8 @@ export class SettingsComponent implements OnInit {
     this.dataService.updateBrandDesign(this.selectedBrand.design).subscribe();
   }
 
-  selectService(service, cell, rowIndex) {
-    let event = {target: {value:service}};
-    // this.selectedBrand.design.prime_service_id = service.id.$oid;
-    console.log(service);
-
-    this.displayServiceName = this.services.filter(service=>{
-      return service.id = this.selectedBrand.design.prime_service_id;
-    })[0]
+  selectService(service) {
+    this.selectedBrand.design.prime_service_id = service.id.$oid;
+    this.displayServiceName = service;
   }
-
-
 }

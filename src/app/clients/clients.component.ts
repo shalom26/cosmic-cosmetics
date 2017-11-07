@@ -27,7 +27,7 @@ export class ClientsComponent implements OnInit {
   }
 
   ngOnInit() {
-    this.dataService.getClinets().subscribe((clients) => {
+    this.dataService.getClients().subscribe((clients) => {
       clients.forEach(row => {
         if (!(row.birthday instanceof Date)) {
           row.birthday = new Date(row.birthday);

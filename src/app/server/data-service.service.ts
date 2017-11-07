@@ -70,7 +70,7 @@ export class DataService {
     return this.authHttp.delete(url).map((res) => res.json())
   }
 
-  getClinets() {
+  getClients() {
     let url = URLS.baseApi + 'clients';
     return this.authHttp.get(url).map((res) => res.json())
   }
@@ -93,7 +93,6 @@ export class DataService {
     return this.authHttp.get(url).map((res) => res.json())
   }
 
-  //Todo return Observable of selected brand
   getSelectedBrand() {
     return this.selectedBrand;
   }
