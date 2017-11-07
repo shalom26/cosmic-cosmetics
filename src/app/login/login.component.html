@@ -1,58 +1,89 @@
-<div class="login-container">
-  <div #mainBox class="ba-auth-box">
-    <!--Header text-->
-    <h2>Login</h2>
+<script>
+  $(window, document, undefined).ready(function() {
 
-    <!--Validation form-->
+    $('input').blur(function() {
+      var $this = $(this);
+      if ($this.val())
+        $this.addClass('used');
+      else
+        $this.removeClass('used');
+    });
+
+    var $ripples = $('.ripples');
+
+    $ripples.on('click.Ripples', function(e) {
+
+      var $this = $(this);
+      var $offset = $this.parent().offset();
+      var $circle = $this.find('.ripplesCircle');
+
+      var x = e.pageX - $offset.left;
+      var y = e.pageY - $offset.top;
+
+      $circle.css({
+        top: y + 'px',
+        left: x + 'px'
+      });
+
+      $this.addClass('is-active');
+
+    });
+
+    $ripples.on('animationend webkitAnimationEnd mozAnimationEnd oanimationend MSAnimationEnd', function(e) {
+    	$(this).removeClass('is-active');
+    });
+
+  });
+</script>
+
+<div class="main-container" dir="rtl">
+  <br/><br/>
+  <div class="row">
+    <div class="col-sm-1">
+      &nbsp;
+    </div>
+    <div class="col-sm-10" align="center">
+      <div class="header">
+        <h1>Cosmic Cosmentics</h1>
+        <h3>ממשק ניהול</h3>
+      </div>
+    </div>
+    <div class="col-sm-1">
+      &nbsp;
+    </div>
+  </div>
+  <div class="row">
     <form class="ba-auth-form"
           (ngSubmit)="login(formGroup.value)"
           #activateForm
           [formGroup]="formGroup"
           (keypress.enter)="login(formGroup.value)">
-      <!--Input fields-->
-      <div class="fields-container">
-        <!--Explanation text-->
-        <label>
-          Please enter email & password
-        </label>
-
-        <!--Email-->
+      <div class="group">
         <input id="email" name="email" type="text" formControlName="email"
                class="form-control"
                [ngClass]="{'ba-auth-has-error': emailError}"
-               placeholder="Email address">
+               placeholder="דואר אלקטרוני">
         <!--Error message-->
-        <div class="err-msg">
+        <!-- <div class="err-msg">
           <section>Please insert a valid email</section>
-        </div>
-
-        <!--Password-->
+        </div> -->
+      </div>
+      <div class="group">
         <input id="password"
                name="password"
                type="password"
                formControlName="password"
                class="form-control"
-               placeholder="Password"
+               placeholder="סיסמא"
         >
-
-        <!--Error message-->
-        <!--<div class="err-msg"-->
-             <!--[@enterAnimation]="submitErr">-->
-          <!--<section>{{submitErrTxt}}</section>-->
-        <!--</div>-->
       </div>
 
-      <!--Submit-->
-      <button class="ba-btn submit" type="submit" [disabled]="formGroup.invalid">
-        <section *ngIf="!isPending">Sign In</section>
+      <button class="button buttonBlue" type="submit" [disabled]="formGroup.invalid">
+        <section *ngIf="!isPending">
+          <div class="ripples buttonRipples"><span class="ripplesCircle">כניסה</span></div>
+        </section>
       </button>
+
     </form>
-
   </div>
-
-  <!--Links-->
-  <div class="footer-container">
-    <!--<a [routerLink]="forgotPasswordUrl">Forgot your password?</a>-->
-  </div>
-
 </div>
