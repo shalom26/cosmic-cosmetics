@@ -29,6 +29,9 @@ import {SharedService} from "./shared/services/shared.service";
 import {BsDatepickerModule} from "ngx-bootstrap";
 
 
+
+
+
 @NgModule({
   declarations: [
     AppComponent,
@@ -59,7 +62,6 @@ import {BsDatepickerModule} from "ngx-bootstrap";
     BsDatepickerModule.forRoot(),
     NgxDatatableModule,
     Ng2DropdownModule
-
 
 ],
   providers: [

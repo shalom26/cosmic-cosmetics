@@ -1,3 +1,7 @@
+
+
+
+
 <div class="seetingd-container" dir="rtl">
   <div class="row">
     <div class="col-sm" align="center">
@@ -171,13 +175,16 @@
         <div class="fields-container">
 
           <!--Primary Color-->
+          <label>
+            צבע ראשי
+          </label>&nbsp;
           <input id="primary"
                  name="primary"
-                 type="text"
+                 type="color"
                  formControlName="primary"
-                 class="form-control"
-                 placeholder="צבע אחד"
                  [(ngModel)]="selectedBrand.design.primary_color">
+
+
 
           <!--&lt;!&ndash;Error message&ndash;&gt;-->
           <!--<div class="err-msg"-->
@@ -185,31 +192,33 @@
           <!--[@enterAnimation]="submitErr">-->
           <!--<section>{{submitErrTxt}}</section>-->
           <!--</div>-->
-
+          <br/>
           <!--Secondary Color-->
-          <textarea id="secondary"
-                    name="about"
-                    type="text"
+          <label>
+            צבע משני
+          </label>&nbsp;
+          <input id="secondary"
+                    name="secondary"
+                    type="color"
                     formControlName="secondary"
-                    class="form-control"
-                    placeholder="צבע שני"
-                    [(ngModel)]="selectedBrand.design.secondary_color"></textarea>
+                    [(ngModel)]="selectedBrand.design.secondary_color"/>
           <!--&lt;!&ndash;Error message&ndash;&gt;-->
           <!--<div class="err-msg"-->
           <!--[style.visibility]="emailError ? 'visible' : 'hidden'"-->
           <!--[@enterAnimation]="emailError">-->
           <!--<section>Please insert a valid email</section>-->
           <!--</div>-->
-
+          <br/>
           <!--Address-->
+          <label>
+            צבע בסיס
+          </label>&nbsp;
           <input id="baseColor"
-                 name="address"
-                 type="text"
+                 name="baseColor"
+                 type="color"
                  formControlName="baseColor"
-                 class="form-control"
-                 placeholder="צבע בסיס"
                  [(ngModel)]="selectedBrand.design.base_color"
-          >
+          />
 
           <!--&lt;!&ndash;Error message&ndash;&gt;-->
           <!--<div class="err-msg"-->
@@ -226,7 +235,7 @@
                  class="form-control"
                  placeholder="טקסט כפתור ראשי"
                  [(ngModel)]="selectedBrand.design.cta_text"
-          >
+          />
 
           <!--&lt;!&ndash;Error message&ndash;&gt;-->
           <!--<div class="err-msg"-->
