@@ -12,7 +12,7 @@
   </div>
     <div class="row">
       <div class="col-sm-1">
-        &nbsp;
+        <button md-fab color="accent" (click)="addService()">+</button>
       </div>
       <div class="col-sm-10">
         <div class="services-table">
@@ -25,7 +25,7 @@
             [footerHeight]="50"
             [rowHeight]="'auto'"
             [rows]="rows">
-            <ngx-datatable-column name="Name" prop="service_name">
+            <ngx-datatable-column name="סוג הטיפול" prop="service_name">
               <ng-template ngx-datatable-cell-template let-rowIndex="rowIndex" let-value="value" let-row="row">
                   <span
                     title="Double click to edit"
@@ -42,7 +42,7 @@
                 />
               </ng-template>
             </ngx-datatable-column>
-            <ngx-datatable-column name="Icon" prop="icon_name">
+            <ngx-datatable-column name="אייקון" prop="icon_name">
               <ng-template ngx-datatable-cell-template let-rowIndex="rowIndex" let-value="value" let-row="row">
                 <ng2-dropdown>
                   <ng2-dropdown-button>
@@ -62,7 +62,7 @@
               </ng-template>
             </ngx-datatable-column>
 
-            <ngx-datatable-column name="Price">
+            <ngx-datatable-column name="מחיר">
               <ng-template ngx-datatable-cell-template let-rowIndex="rowIndex" let-value="value" let-row="row">
                   <span
                     title="Double click to edit"
@@ -79,7 +79,7 @@
                 />
               </ng-template>
             </ngx-datatable-column>
-            <ngx-datatable-column name="Duration" prop="duration_in_minutes">
+            <ngx-datatable-column name="משך זמן (דקות)" prop="duration_in_minutes">
               <ng-template ngx-datatable-cell-template let-rowIndex="rowIndex" let-value="value" let-row="row">
                   <span
                     title="Double click to edit"
@@ -100,7 +100,7 @@
         </div>
       </div>
       <div class="col-sm-1">
-        <button md-fab color="accent" (click)="addService()">+</button>
+        &nbsp;
       </div>
     </div>
 </div>
