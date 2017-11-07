@@ -161,7 +161,9 @@
         </form>
     </div>
   </div>
-
+  <div class="col-sm">
+    &nbsp;
+  </div>
   <div class="col-sm">
     <h3>הגדרות אפליקציה</h3>
     <!--Design Form-->
@@ -246,14 +248,32 @@
 
           <!--Todo make as dropDown -->
           <!--Prime service id -->
-          <input id="primeService"
+          <!-- <input id="primeService"
                  name="primeService"
                  type="text"
                  formControlName="primeService"
                  class="form-control"
-                 placeholder="פייסבוק"
+                 placeholder="שירות מהיר"
                  [(ngModel)]="selectedBrand.design.prime_service_id"
-          >
+          > -->
+
+
+
+          <ng2-dropdown>
+            <ng2-dropdown-button>
+              <div class="icon-container">
+בחר             {{displayServiceName?.service_name}}
+              </div>
+            </ng2-dropdown-button>
+            <ng2-dropdown-menu>
+              <ng2-menu-item *ngFor="let service of services" (click)="selectService(service,'icon_name',rowIndex)">
+                <!--Todo fix image size-->
+                <div class="icon-container">
+                {{service.service_name}}
+                </div>
+              </ng2-menu-item>
+            </ng2-dropdown-menu>
+          </ng2-dropdown>
 
           <!--&lt;!&ndash;Error message&ndash;&gt;-->
           <!--<div class="err-msg"-->
