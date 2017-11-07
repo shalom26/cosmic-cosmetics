@@ -6,5 +6,13 @@
 @import '~@swimlane/ngx-datatable/release/themes/material.css';
 @import '~@swimlane/ngx-datatable/release/assets/icons.css';
 @import "../node_modules/ngx-bootstrap/datepicker/bs-datepicker.css";
+@import url('https://fonts.googleapis.com/css?family=Alef:400,700&subset=hebrew');
 
-//toDo choose fonts
+body {
+  font-family: Alef, Roboto, 'sans-serif' !important;
+}
+
+//Override material table
+.mat-tab-link {
+  font-family: Alef, Roboto, 'sans-serif' !important;
+}
