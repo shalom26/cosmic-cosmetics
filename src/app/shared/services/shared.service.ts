@@ -7,4 +7,6 @@ export class SharedService {
   isNavBar: Subject<boolean> = new Subject();
   isNavBar$ = this.isNavBar.asObservable();
 
+  isdataInit: boolean = false;
+
 }

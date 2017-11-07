@@ -1,6 +1,5 @@
 import {Component, OnInit} from '@angular/core';
 import {DataService} from "./server/data-service.service";
-import {ActivatedRoute} from "@angular/router";
 import {SharedService} from "./shared/services/shared.service";
 
 @Component({
@@ -9,7 +8,6 @@ import {SharedService} from "./shared/services/shared.service";
   styleUrls: ['./app.component.scss']
 })
 export class AppComponent implements OnInit {
-  public isLoggedIn = DataService.isLoggedIn;
   public isData: boolean = false;
   public isNavBar: boolean = false;
   public navLinks = [
@@ -24,7 +22,7 @@ export class AppComponent implements OnInit {
       label: 'עובדים'
     }, {
       link: 'services',
-      label: 'שרותים'
+      label: 'טיפולים'
     },
     {
       link: 'settings',
@@ -34,23 +32,14 @@ export class AppComponent implements OnInit {
 
 
   constructor(private dataService: DataService,
-              private router: ActivatedRoute,
-              private sharedService: SharedService) {
-  }
+              private sharedService: SharedService) {}
 
-  //Todo cancel nav bar on login page
   ngOnInit() {
     //set SideBar state
     this.sharedService.isNavBar$.subscribe(state => {
       this.isNavBar = state;
-    })
-    //Get Brands
-    this.dataService.getBrands().subscribe((res) => {
-      //Set default brand
-      this.dataService.setSelectedBrand(res[0]);
-      this.isData = true;
+    });
 
-    })
   }
 
 
