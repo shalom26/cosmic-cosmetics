@@ -26,16 +26,18 @@ export class EmployeesComponent implements OnInit {
   public events: CalendarEvent [] = [];
   public selectedEmp: IEmployee;
 
+
   constructor(private dataService: DataService) {
   }
 
   ngOnInit() {
     this.dataService.getEmployees().subscribe(emps => {
-      console.log(emps);
-      this.emps = emps;
-      this.emps[0].selected = true;
-      this.selectedEmp = this.emps[0];
-    })
+      if (emps.length > 0) {
+        this.emps = emps;
+        this.emps[0].selected = true;
+        this.selectedEmp = this.emps[0];
+      }
+    });
   }
 
   addEmployee() {

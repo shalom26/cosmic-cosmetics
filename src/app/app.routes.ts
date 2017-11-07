@@ -5,13 +5,12 @@ import {ServicesComponent} from "./services/services.component";
 import {LoginComponent} from "./login/login.component";
 import {ClientsComponent} from "./clients/clients.component";
 import {SettingsComponent} from "./settings/settings.component";
-import {LoginAuthGuard} from "./login/auth-guard/login-auth-guard";
+import {IsLoggedIn, LoginAuthGuard} from "./login/auth-guard/login-auth-guard";
 
-//Todo canActivate + get data
 
 export const routes: Routes = [
   {path: '', redirectTo: 'calendar', pathMatch: 'full'},
-  {path: "login", component: LoginComponent},
+  {path: "login", component: LoginComponent,canActivate:[IsLoggedIn]},
   {path: "calendar", component: MyCalendarComponent, canActivate: [LoginAuthGuard]},
   {path: "employees", component: EmployeesComponent, canActivate: [LoginAuthGuard]},
   {path: "clients", component: ClientsComponent, canActivate: [LoginAuthGuard]},

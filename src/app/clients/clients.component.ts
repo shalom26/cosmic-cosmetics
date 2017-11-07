@@ -1,5 +1,6 @@
 import {Component, OnInit} from '@angular/core';
 import {DataService} from "../server/data-service.service";
+import {BsDatepickerConfig} from "ngx-bootstrap";
 
 interface IClinet {
   birthday: string
@@ -19,6 +20,8 @@ interface IClinet {
 export class ClientsComponent implements OnInit {
   public rows:IClinet[];
   editing = [];
+  public bsConfig: Partial<BsDatepickerConfig>;
+
 
   constructor(private dataService: DataService) {
   }
@@ -30,6 +33,7 @@ export class ClientsComponent implements OnInit {
     }, (err) => {
       console.log(err);
     })
+    this.bsConfig = {containerClass:'theme-blue'}
 
   }
 

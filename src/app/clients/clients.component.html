@@ -86,12 +86,23 @@
                     *ngIf="!editing[rowIndex + '-birthday']">
                     {{value}}
                   </span>
-                <input
-                  autofocus
-                  (blur)="updateValue($event, 'birthday', rowIndex)"
-                  *ngIf="editing[rowIndex+ '-birthday']"
-                  type="text"
-                  [value]="value"/>
+
+                <div class="col-xs-6 col-6 col-md-4 col-lg-4">
+                  <div class="form-group">
+                    <div class="input-group">
+                      <input type="text" class="form-control" bsDatepicker #dp="bsDatepicker" [bsConfig]="bsConfig">
+                      <div class="input-group-btn">
+                        <button class="btn btn-success" (click)="dp.show() ">Open</button>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+                <!--<input-->
+                  <!--autofocus-->
+                  <!--(blur)="updateValue($event, 'birthday', rowIndex)"-->
+                  <!--*ngIf="editing[rowIndex+ '-birthday']"-->
+                  <!--type="text"-->
+                  <!--[value]="value"/>-->
               </ng-template>
             </ngx-datatable-column>
           </ngx-datatable>

@@ -24,8 +24,9 @@ import {AuthModule} from "./server/auth.module";
 import {ClientsComponent} from "./clients/clients.component";
 import { SettingsComponent } from './settings/settings.component';
 import {Ng2DropdownModule} from "ng2-material-dropdown";
-import {LoginAuthGuard} from "./login/auth-guard/login-auth-guard";
+import {IsLoggedIn, LoginAuthGuard} from "./login/auth-guard/login-auth-guard";
 import {SharedService} from "./shared/services/shared.service";
+import {BsDatepickerModule} from "ngx-bootstrap";
 
 
 @NgModule({
@@ -55,6 +56,7 @@ import {SharedService} from "./shared/services/shared.service";
     NgbDatepickerModule.forRoot(),
     NgbTimepickerModule.forRoot(),
     CalendarModule.forRoot(),
+    BsDatepickerModule.forRoot(),
     NgxDatatableModule,
     Ng2DropdownModule
 
@@ -65,7 +67,8 @@ import {SharedService} from "./shared/services/shared.service";
     CalendarUtils,
     DataService,
     LoginAuthGuard,
-    SharedService
+    SharedService,
+    IsLoggedIn
   ],
   bootstrap: [AppComponent]
 })

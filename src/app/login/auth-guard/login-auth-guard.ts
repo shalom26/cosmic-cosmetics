@@ -32,3 +32,16 @@ export class LoginAuthGuard implements CanActivate {
     }
   }
 }
+
+@Injectable()
+export class IsLoggedIn implements CanActivate {
+  constructor(private router:Router){}
+
+  canActivate(){
+    if(localStorage.getItem('token')){
+      this.router.navigateByUrl('/calendar');
+    }
+    return true
+  }
+
+}
