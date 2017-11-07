@@ -1,0 +1,44 @@
+.inputfile {
+  width: 0.1px;
+  height: 0.1px;
+  opacity: 0;
+  overflow: hidden;
+  position: absolute;
+  z-index: -1;
+  :disabled {
+    cursor: not-allowed;
+  }
+
+}
+
+.inputfile + label {
+  cursor: pointer;
+  font-size: larger;
+  :disabled {
+    cursor: not-allowed;
+  }
+}
+
+.inputfile:focus + label,
+.inputfile + label:hover {
+  transform: scale(1.1);
+  :disabled {
+    cursor: not-allowed;
+  }
+}
+
+.upload-container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  cursor: pointer;
+}
+
+.photo-icon {
+  width: 2vw;
+  height: 3vh;
+}
+
+.disabled{
+  cursor: not-allowed;
+}

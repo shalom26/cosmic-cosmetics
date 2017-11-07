@@ -1,10 +1,15 @@
+@import "../../palette";
 
 .date-container {
-display: flex;
+  display: flex;
   .date-input {
     width: 0;
     height: 0;
     padding: 0;
     border: hidden;
+  }
+  .btn {
+    color: $base-dark;
+    background-color: $filling;
   }
 }

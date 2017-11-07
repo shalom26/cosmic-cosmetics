@@ -26,6 +26,7 @@
               <div class="emp-edit" *ngIf="emp.isEdit">
                 <input type="text" [(ngModel)]="emp.picture_url">
                 <input class="emp-name" [(ngModel)]="emp.full_name">
+                <cc-image-uploader (uploadedImage)="uploadImage($event)">Upload Image</cc-image-uploader>
                 <button class="btn btn-primary" (click)="saveEdit(emp)">Save</button>
                 <button class="btn btn-danger" (click)="deleteEmployee(emp)">Delete</button>
               </div>

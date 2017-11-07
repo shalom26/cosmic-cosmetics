@@ -8,8 +8,7 @@ import {MyCalendarComponent} from './calendar/calendar.component';
 import {ServicesComponent} from './services/services.component';
 import {EmployeesComponent} from './employees/employees.component';
 import {NgbDatepickerModule, NgbModule, NgbTimepickerModule} from '@ng-bootstrap/ng-bootstrap';
-import { NgxDatatableModule } from '@swimlane/ngx-datatable';
-
+import {NgxDatatableModule} from '@swimlane/ngx-datatable';
 
 
 import {appRoutes} from "./app.routes";
@@ -22,15 +21,14 @@ import {HttpModule} from "@angular/http";
 import {LoginComponent} from './login/login.component';
 import {AuthModule} from "./server/auth.module";
 import {ClientsComponent} from "./clients/clients.component";
-import { SettingsComponent } from './settings/settings.component';
+import {SettingsComponent} from './settings/settings.component';
 import {Ng2DropdownModule} from "ng2-material-dropdown";
 import {IsLoggedIn, LoginAuthGuard} from "./login/auth-guard/login-auth-guard";
 import {SharedService} from "./shared/services/shared.service";
 import {BsDatepickerModule} from "ngx-bootstrap";
 import {MomentModule} from "angular2-moment";
-
-
-
+import {ImageUploaderService} from "./services/image-uploader/image-uploader.service";
+import {ImageUploaderModule} from "./services/image-uploader/image-uploader.module";
 
 
 @NgModule({
@@ -63,7 +61,8 @@ import {MomentModule} from "angular2-moment";
     BsDatepickerModule.forRoot(),
     NgxDatatableModule,
     Ng2DropdownModule,
-    MomentModule
+    MomentModule,
+    ImageUploaderModule
 
 ],
   providers: [
@@ -72,7 +71,8 @@ import {MomentModule} from "angular2-moment";
     DataService,
     LoginAuthGuard,
     SharedService,
-    IsLoggedIn
+    IsLoggedIn,
+    ImageUploaderService
   ],
   bootstrap: [AppComponent]
 })

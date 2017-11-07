@@ -89,19 +89,13 @@
                          [bsConfig]="bsConfig"
                          [bsValue]="value"
                          (bsValueChange)="updateValue($event, 'birthday', rowIndex)">
-                    <button class="btn btn-info btn-sm" (click)="dp.show() ">Open</button>
+                    <button class="btn btn-sm" (click)="dp.show() ">Open</button>
                 </div>
                 <!--Date display-->
                 <span>
                     {{value | amDateFormat:'LL'}}
                   </span>
               </div>
-              <!--<input-->
-              <!--autofocus-->
-              <!--(blur)="updateValue($event, 'birthday', rowIndex)"-->
-              <!--*ngIf="editing[rowIndex+ '-birthday']"-->
-              <!--type="text"-->
-              <!--[value]="value"/>-->
             </ng-template>
           </ngx-datatable-column>
         </ngx-datatable>

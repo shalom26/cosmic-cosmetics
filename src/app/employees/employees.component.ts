@@ -25,6 +25,7 @@ export class EmployeesComponent implements OnInit {
   public viewDate: Date = new Date();
   public events: CalendarEvent [] = [];
   public selectedEmp: IEmployee;
+  private imageUrl;
 
 
   constructor(private dataService: DataService) {
@@ -52,8 +53,10 @@ export class EmployeesComponent implements OnInit {
     emp.isEdit = !emp.isEdit;
   }
 
-  saveEdit(emp) {
-    console.log(emp);
+  saveEdit(emp: IEmployee) {
+    if (this.imageUrl) {
+      emp.picture_url = this.imageUrl;
+    }
     this.dataService.saveEmployee(emp).subscribe(savedEmp => {
       console.log('saved emp -->', savedEmp);
       emp.isEdit = false;
@@ -73,9 +76,14 @@ export class EmployeesComponent implements OnInit {
     emp.shifts.forEach((shift) => {
       shift.start = new Date(shift.start);
       shift.end = new Date(shift.end);
-    })
+    });
     this.events = emp.shifts;
     this.selectedEmp = emp;
+  }
+
+  uploadImage(image) {
+    this.imageUrl = image.image.secure_url;
+
   }
 
 }
