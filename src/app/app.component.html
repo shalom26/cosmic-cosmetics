@@ -1,5 +1,8 @@
 <div>
-  <nav md-tab-nav-bar *ngIf="isNavBar">
+  <nav md-tab-nav-bar *ngIf="isNavBar" dir="rtl">
+    <a class="navbar-brand" href="/">
+      <img src="/assets/Header_Logo.png" width="100" height="30" alt="">
+    </a>
 
     <a md-tab-link
        *ngFor="let link of navLinks"
@@ -9,9 +12,6 @@
       {{link.label}}
     </a>
 
-    <a class="navbar-brand" href="/">
-      <img src="https://upload.wikimedia.org/wikipedia/commons/4/41/SEGA_logo.png" width="100" height="30" alt="">
-    </a>
   </nav>
 
   <router-outlet></router-outlet>
