@@ -27,6 +27,7 @@ import {Ng2DropdownModule} from "ng2-material-dropdown";
 import {IsLoggedIn, LoginAuthGuard} from "./login/auth-guard/login-auth-guard";
 import {SharedService} from "./shared/services/shared.service";
 import {BsDatepickerModule} from "ngx-bootstrap";
+import {MomentModule} from "angular2-moment";
 
 
 
@@ -61,7 +62,8 @@ import {BsDatepickerModule} from "ngx-bootstrap";
     CalendarModule.forRoot(),
     BsDatepickerModule.forRoot(),
     NgxDatatableModule,
-    Ng2DropdownModule
+    Ng2DropdownModule,
+    MomentModule
 
 ],
   providers: [
