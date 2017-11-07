@@ -1,153 +1,165 @@
-<div class="seetingd-container">
-  <!--Brand Settings-->
-  <div class="brand-form">
-    <form class="ba-auth-form"
-          (ngSubmit)="onBrandFormSubmit()"
-          #activateForm
-          [formGroup]="formGroup">
-      <!--Input fields-->
-      <div class="fields-container">
-        <!--Explanation text-->
-        <label>
-          Settings Page
-        </label>
+<div class="seetingd-container" dir="rtl">
+  <div class="row">
+    <div class="col-sm" align="center">
+      <h1>הגדרות</h1>
+    </div>
+  </div>
+  <br/>
+  <div class="row">
+    <div class="col-sm">
+      &nbsp;
+    </div>
+    <div class="col-sm">
+      <h3>הגדרות עסק</h3>
+      <!--Brand Settings-->
+      <div class="brand-form">
+        <form class="ba-auth-form"
+              (ngSubmit)="onBrandFormSubmit()"
+              #activateForm
+              [formGroup]="formGroup">
+          <!--Input fields-->
+          <div class="fields-container">
+            <!--Title-->
+            <input id="title"
+                   name="title"
+                   type="text"
+                   formControlName="title"
+                   class="form-control"
+                   placeholder="כותרת"
+                   [(ngModel)]="selectedBrand.title">
 
-        <!--Title-->
-        <input id="title"
-               name="title"
-               type="text"
-               formControlName="title"
-               class="form-control"
-               placeholder="כותרת"
-               [(ngModel)]="selectedBrand.title">
+            <!--&lt;!&ndash;Error message&ndash;&gt;-->
+            <!--<div class="err-msg"-->
+            <!--[style.visibility]="submitErr ? 'visible' : 'hidden'"-->
+            <!--[@enterAnimation]="submitErr">-->
+            <!--<section>{{submitErrTxt}}</section>-->
+            <!--</div>-->
 
-        <!--&lt;!&ndash;Error message&ndash;&gt;-->
-        <!--<div class="err-msg"-->
-        <!--[style.visibility]="submitErr ? 'visible' : 'hidden'"-->
-        <!--[@enterAnimation]="submitErr">-->
-        <!--<section>{{submitErrTxt}}</section>-->
-        <!--</div>-->
+            <!--About-->
+            <textarea id="about"
+                      name="about"
+                      type="text"
+                      formControlName="about"
+                      class="form-control"
+                      placeholder="אודות"
+                      [(ngModel)]="selectedBrand.about"></textarea>
+            <!--&lt;!&ndash;Error message&ndash;&gt;-->
+            <!--<div class="err-msg"-->
+            <!--[style.visibility]="emailError ? 'visible' : 'hidden'"-->
+            <!--[@enterAnimation]="emailError">-->
+            <!--<section>Please insert a valid email</section>-->
+            <!--</div>-->
 
-        <!--About-->
-        <textarea id="about"
-                  name="about"
-                  type="text"
-                  formControlName="about"
-                  class="form-control"
-                  placeholder="אודות"
-                  [(ngModel)]="selectedBrand.about"></textarea>
-        <!--&lt;!&ndash;Error message&ndash;&gt;-->
-        <!--<div class="err-msg"-->
-        <!--[style.visibility]="emailError ? 'visible' : 'hidden'"-->
-        <!--[@enterAnimation]="emailError">-->
-        <!--<section>Please insert a valid email</section>-->
-        <!--</div>-->
+            <!--Address-->
+            <input id="address"
+                   name="address"
+                   type="text"
+                   formControlName="address"
+                   class="form-control"
+                   placeholder="כתובת"
+                   [(ngModel)]="selectedBrand.address"
+            >
 
-        <!--Address-->
-        <input id="address"
-               name="address"
-               type="text"
-               formControlName="address"
-               class="form-control"
-               placeholder="כתובת"
-               [(ngModel)]="selectedBrand.address"
-        >
+            <!--&lt;!&ndash;Error message&ndash;&gt;-->
+            <!--<div class="err-msg"-->
+            <!--[style.visibility]="submitErr ? 'visible' : 'hidden'"-->
+            <!--[@enterAnimation]="submitErr">-->
+            <!--<section>{{submitErrTxt}}</section>-->
+            <!--</div>-->
 
-        <!--&lt;!&ndash;Error message&ndash;&gt;-->
-        <!--<div class="err-msg"-->
-        <!--[style.visibility]="submitErr ? 'visible' : 'hidden'"-->
-        <!--[@enterAnimation]="submitErr">-->
-        <!--<section>{{submitErrTxt}}</section>-->
-        <!--</div>-->
+            <!--Phone-->
+            <input id="phone"
+                   name="phone"
+                   type="text"
+                   formControlName="phone"
+                   class="form-control"
+                   placeholder="מספר טלפון"
+                   [(ngModel)]="selectedBrand.phone_number"
+            >
 
-        <!--Phone-->
-        <input id="phone"
-               name="phone"
-               type="text"
-               formControlName="phone"
-               class="form-control"
-               placeholder="מספר טלפון"
-               [(ngModel)]="selectedBrand.phone_number"
-        >
+            <!--&lt;!&ndash;Error message&ndash;&gt;-->
+            <!--<div class="err-msg"-->
+            <!--[style.visibility]="submitErr ? 'visible' : 'hidden'"-->
+            <!--[@enterAnimation]="submitErr">-->
+            <!--<section>{{submitErrTxt}}</section>-->
+            <!--</div>-->
 
-        <!--&lt;!&ndash;Error message&ndash;&gt;-->
-        <!--<div class="err-msg"-->
-        <!--[style.visibility]="submitErr ? 'visible' : 'hidden'"-->
-        <!--[@enterAnimation]="submitErr">-->
-        <!--<section>{{submitErrTxt}}</section>-->
-        <!--</div>-->
+            <!--FacbookUrl-->
+            <input id="facebookUrl"
+                   name="facebookUrl"
+                   type="text"
+                   formControlName="facebookUrl"
+                   class="form-control"
+                   placeholder="פייסבוק"
+                   [(ngModel)]="selectedBrand.facebook_url"
+            >
 
-        <!--FacbookUrl-->
-        <input id="facebookUrl"
-               name="facebookUrl"
-               type="text"
-               formControlName="facebookUrl"
-               class="form-control"
-               placeholder="פייסבוק"
-               [(ngModel)]="selectedBrand.facebook_url"
-        >
+            <!--&lt;!&ndash;Error message&ndash;&gt;-->
+            <!--<div class="err-msg"-->
+            <!--[style.visibility]="submitErr ? 'visible' : 'hidden'"-->
+            <!--[@enterAnimation]="submitErr">-->
+            <!--<section>{{submitErrTxt}}</section>-->
+            <!--</div>-->
 
-        <!--&lt;!&ndash;Error message&ndash;&gt;-->
-        <!--<div class="err-msg"-->
-        <!--[style.visibility]="submitErr ? 'visible' : 'hidden'"-->
-        <!--[@enterAnimation]="submitErr">-->
-        <!--<section>{{submitErrTxt}}</section>-->
-        <!--</div>-->
+            <!--InstegramUrl-->
+            <input id="insergramUrl"
+                   name="insergramUrl"
+                   type="text"
+                   formControlName="instergramUrl"
+                   class="form-control"
+                   placeholder=" כתובת אינסטגרם"
+                   [(ngModel)]="selectedBrand.instagram_url"
+            >
 
-        <!--InstegramUrl-->
-        <input id="insergramUrl"
-               name="insergramUrl"
-               type="text"
-               formControlName="instergramUrl"
-               class="form-control"
-               placeholder=" כתובת אינסטגרם"
-               [(ngModel)]="selectedBrand.instagram_url"
-        >
+            <!--&lt;!&ndash;Error message&ndash;&gt;-->
+            <!--<div class="err-msg"-->
+            <!--[style.visibility]="submitErr ? 'visible' : 'hidden'"-->
+            <!--[@enterAnimation]="submitErr">-->
+            <!--<section>{{submitErrTxt}}</section>-->
+            <!--</div>-->
 
-        <!--&lt;!&ndash;Error message&ndash;&gt;-->
-        <!--<div class="err-msg"-->
-        <!--[style.visibility]="submitErr ? 'visible' : 'hidden'"-->
-        <!--[@enterAnimation]="submitErr">-->
-        <!--<section>{{submitErrTxt}}</section>-->
-        <!--</div>-->
+            <!--LogoUrl-->
+            <input id="logoUrl"
+                   name="logoUrl"
+                   type="text"
+                   formControlName="logoUrl"
+                   class="form-control"
+                   placeholder="תמונת לוגו"
+                   [(ngModel)]="selectedBrand.logo_url">
 
-        <!--LogoUrl-->
-        <input id="logoUrl"
-               name="logoUrl"
-               type="text"
-               formControlName="logoUrl"
-               class="form-control"
-               placeholder="תמונת לוגו"
-               [(ngModel)]="selectedBrand.logo_url">
+            <!--&lt;!&ndash;Error message&ndash;&gt;-->
+            <!--<div class="err-msg"-->
+            <!--[style.visibility]="submitErr ? 'visible' : 'hidden'"-->
+            <!--[@enterAnimation]="submitErr">-->
+            <!--<section>{{submitErrTxt}}</section>-->
+            <!--</div>-->
 
-        <!--&lt;!&ndash;Error message&ndash;&gt;-->
-        <!--<div class="err-msg"-->
-        <!--[style.visibility]="submitErr ? 'visible' : 'hidden'"-->
-        <!--[@enterAnimation]="submitErr">-->
-        <!--<section>{{submitErrTxt}}</section>-->
-        <!--</div>-->
+            <!--CoverUrl-->
+            <input id="coverUrl"
+                   name="coverUrl"
+                   type="text"
+                   formControlName="coverUrl"
+                   class="form-control"
+                   placeholder="תמונת רקע"
+                   [(ngModel)]="selectedBrand.cover_url">
 
-        <!--CoverUrl-->
-        <input id="coverUrl"
-               name="coverUrl"
-               type="text"
-               formControlName="coverUrl"
-               class="form-control"
-               placeholder="תמונת רקע"
-               [(ngModel)]="selectedBrand.cover_url">
+            <!--&lt;!&ndash;Error message&ndash;&gt;-->
+            <!--<div class="err-msg"-->
+            <!--[style.visibility]="submitErr ? 'visible' : 'hidden'"-->
+            <!--[@enterAnimation]="submitErr">-->
+            <!--<section>{{submitErrTxt}}</section>-->
+            <!--</div>-->
 
-        <!--&lt;!&ndash;Error message&ndash;&gt;-->
-        <!--<div class="err-msg"-->
-        <!--[style.visibility]="submitErr ? 'visible' : 'hidden'"-->
-        <!--[@enterAnimation]="submitErr">-->
-        <!--<section>{{submitErrTxt}}</section>-->
-        <!--</div>-->
+          </div>
 
-      </div>
+          <!--Submit-->
+          <button class="btn btn-info" (submit)="onBrandFormSubmit()">שמירת הגדרות עסק</button>
+        </form>
+    </div>
+  </div>
 
-      <!--Submit-->
-      <button class="btn btn-info" (submit)="onBrandFormSubmit()">Save Settings</button>
-    </form>
+  <div class="col-sm">
+    <h3>הגדרות אפליקציה</h3>
     <!--Design Form-->
     <div class="design">
       <!--Brand Settings-->
@@ -157,10 +169,6 @@
             [formGroup]="designFormGroup">
         <!--Input fields-->
         <div class="fields-container">
-          <!--Explanation text-->
-          <label>
-            Design Page
-          </label>
 
           <!--Primary Color-->
           <input id="primary"
@@ -247,10 +255,13 @@
         </div>
 
         <!--Submit-->
-        <button class="btn btn-info" (submit)="onDesignFormSubmit()">Save Design</button>
+        <button class="btn btn-info" (submit)="onDesignFormSubmit()">שמירת עיצוב</button>
       </form>
     </div>
   </div>
-
+  <div class="col-sm">
+    &nbsp;
+  </div>
+</div>
 
 </div>

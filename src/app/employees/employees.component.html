@@ -1,51 +1,77 @@
 <div class="main-container">
-
-  <md-list>
-    <h3 md-subheader>עובדים</h3>
-    <md-list-item *ngFor="let emp of emps; let i = index">
-      <div class="emp-container">
-        <div class="emp-info" *ngIf="!emp.isEdit" (click)="selectEmployee(emp,i)" [ngClass]="{'selected':emp.selected}">
-          <img [src]="emp.picture_url" alt="employee_picture">
-          <div class="emp-name" md-line>{{emp.full_name}}</div>
-          <button class="btn btn-info" (click)="setEditMode(emp)">edit</button>
-        </div>
-        <div class="emp-edit" *ngIf="emp.isEdit">
-          <input type="text" [(ngModel)]="emp.picture_url">
-          <input class="emp-name" [(ngModel)]="emp.full_name">
-          <button class="btn btn-primary" (click)="saveEdit(emp)">Save</button>
-          <button class="btn btn-danger" (click)="deleteEmployee(emp)">Delete</button>
+  <div class="row">
+    <div class="col-sm-1">
+      &nbsp;
+    </div>
+    <div class="col-sm-10" align="center">
+      <div class="header"><h2>ניהול עובדים</h2></div>
+    </div>
+    <div class="col-sm-1">
+      &nbsp;
+    </div>
+  </div>
+    <div class="row">
+      <div class="col-sm-1">
+        &nbsp;
+      </div>
+      <div class="col-sm-10">
+        <md-list>
+          <md-list-item *ngFor="let emp of emps; let i = index">
+            <div class="emp-container">
+              <div class="emp-info" *ngIf="!emp.isEdit" (click)="selectEmployee(emp,i)" [ngClass]="{'selected':emp.selected}">
+                <img [src]="emp.picture_url" alt="employee_picture">
+                <div class="emp-name" md-line>{{emp.full_name}}</div>
+                <button class="btn btn-info" (click)="setEditMode(emp)">edit</button>
+              </div>
+              <div class="emp-edit" *ngIf="emp.isEdit">
+                <input type="text" [(ngModel)]="emp.picture_url">
+                <input class="emp-name" [(ngModel)]="emp.full_name">
+                <button class="btn btn-primary" (click)="saveEdit(emp)">Save</button>
+                <button class="btn btn-danger" (click)="deleteEmployee(emp)">Delete</button>
+              </div>
+            </div>
+          </md-list-item>
+        </md-list>
+      </div>
+      <div class="col-sm-1">
+        <div class="add-emp">
+          <button md-fab color="accent" (click)="addEmployee()">+</button>
         </div>
       </div>
-    </md-list-item>
-  </md-list>
-
-  <div class="add-emp">
-    <button md-fab color="accent" (click)="addEmployee()">+</button>
-  </div>
-
-  <div class="calendar">
-    <mwl-demo-utils-calendar-header
-      [(view)]="view"
-      [(viewDate)]="viewDate">
-    </mwl-demo-utils-calendar-header>
-
-    <div [ngSwitch]="view">
-      <mwl-calendar-month-view
-        *ngSwitchCase="'month'"
-        [viewDate]="viewDate"
-        [events]="events">
-      </mwl-calendar-month-view>
-      <mwl-calendar-week-view
-        *ngSwitchCase="'week'"
-        [viewDate]="viewDate"
-        [events]="events">
-      </mwl-calendar-week-view>
-      <mwl-calendar-day-view
-        *ngSwitchCase="'day'"
-        [viewDate]="viewDate"
-        [events]="events">
-      </mwl-calendar-day-view>
     </div>
 
-  </div>
+    <div class="row">
+      <div class="col-sm-1">
+        &nbsp;
+      </div>
+      <div class="col-sm-10">
+        <div class="calendar">
+          <mwl-demo-utils-calendar-header
+            [(view)]="view"
+            [(viewDate)]="viewDate">
+          </mwl-demo-utils-calendar-header>
+
+          <div [ngSwitch]="view">
+            <mwl-calendar-month-view
+              *ngSwitchCase="'month'"
+              [viewDate]="viewDate"
+              [events]="events">
+            </mwl-calendar-month-view>
+            <mwl-calendar-week-view
+              *ngSwitchCase="'week'"
+              [viewDate]="viewDate"
+              [events]="events">
+            </mwl-calendar-week-view>
+            <mwl-calendar-day-view
+              *ngSwitchCase="'day'"
+              [viewDate]="viewDate"
+              [events]="events">
+            </mwl-calendar-day-view>
+          </div>
+        </div>
+      </div>
+      <div class="col-sm-1">
+        &nbsp;
+      </div>
+    </div>
 </div>

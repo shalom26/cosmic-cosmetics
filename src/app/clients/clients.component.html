@@ -1,85 +1,105 @@
 <div class="services-container">
-  <div class="header">לקוחות</div>
-  <div class="services-table">
-    <ngx-datatable
-      #mydatatable
-      class="material"
-      [headerHeight]="50"
-      [limit]="5"
-      [columnMode]="'force'"
-      [footerHeight]="50"
-      [rowHeight]="'auto'"
-      [rows]="rows">
-      <ngx-datatable-column name="שם" prop="full_name">
-        <ng-template ngx-datatable-cell-template let-rowIndex="rowIndex" let-value="value" let-row="row">
-            <span
-              title="Double click to edit"
-              (dblclick)="editing[rowIndex + '-full_name'] = true"
-              *ngIf="!editing[rowIndex + '-full_name']">
-              {{value}}
-            </span>
-          <input
-            autofocus
-            (blur)="updateValue($event, 'full_name', rowIndex)"
-            *ngIf="editing[rowIndex+ '-full_name']"
-            type="text"
-            [value]="value"
-          />
-        </ng-template>
-      </ngx-datatable-column>
-      <ngx-datatable-column name="טלפון" prop="phone_number">
-        <ng-template ngx-datatable-cell-template let-rowIndex="rowIndex" let-value="value" let-row="row">
-            <span
-              title="Double click to edit"
-              (dblclick)="editing[rowIndex + '-phone_number'] = true"
-              *ngIf="!editing[rowIndex + '-phone_number']">
-              {{value}}
-            </span>
-          <input
-            autofocus
-            (blur)="updateValue($event, 'phone_number', rowIndex)"
-            *ngIf="editing[rowIndex+ '-phone_number']"
-            type="text"
-            [value]="value"
-          />
-        </ng-template>
-      </ngx-datatable-column>
-
-      <ngx-datatable-column name="אימייל" prop="email">
-        <ng-template ngx-datatable-cell-template let-rowIndex="rowIndex" let-value="value" let-row="row">
-            <span
-              title="Double click to edit"
-              (dblclick)="editing[rowIndex + '-email'] = true"
-              *ngIf="!editing[rowIndex + '-email']">
-              {{value}}
-            </span>
-          <input
-            autofocus
-            (blur)="updateValue($event, 'email', rowIndex)"
-            *ngIf="editing[rowIndex+ '-email']"
-            type="text"
-            [value]="value"
-          />
-        </ng-template>
-      </ngx-datatable-column>
-      <!--ToDo add date picker-->
-      <ngx-datatable-column name="יום הולדת" prop="birthday">
-        <ng-template ngx-datatable-cell-template let-rowIndex="rowIndex" let-value="value" let-row="row">
-            <span
-              title="Double click to edit"
-              (dblclick)="editing[rowIndex + '-birthday'] = true"
-              *ngIf="!editing[rowIndex + '-birthday']">
-              {{value}}
-            </span>
-          <input
-            autofocus
-            (blur)="updateValue($event, 'birthday', rowIndex)"
-            *ngIf="editing[rowIndex+ '-birthday']"
-            type="text"
-            [value]="value"/>
-        </ng-template>
-      </ngx-datatable-column>
-    </ngx-datatable>
+  <div class="row">
+    <div class="col-sm-1">
+      &nbsp;
+    </div>
+    <div class="col-sm-10" align="center">
+      <div class="header"><h2>ניהול לקוחות</h2></div>
+    </div>
+    <div class="col-sm-1">
+      &nbsp;
+    </div>
   </div>
-  <button md-fab color="accent" (click)="addClient()">+</button>
+    <div class="row">
+      <div class="col-sm-1">
+        &nbsp;
+      </div>
+      <div class="col-sm-10">
+        <div class="services-table">
+          <ngx-datatable
+            #mydatatable
+            class="material"
+            [headerHeight]="50"
+            [limit]="5"
+            [columnMode]="'force'"
+            [footerHeight]="50"
+            [rowHeight]="'auto'"
+            [rows]="rows">
+            <ngx-datatable-column name="שם" prop="full_name">
+              <ng-template ngx-datatable-cell-template let-rowIndex="rowIndex" let-value="value" let-row="row">
+                  <span
+                    title="Double click to edit"
+                    (dblclick)="editing[rowIndex + '-full_name'] = true"
+                    *ngIf="!editing[rowIndex + '-full_name']">
+                    {{value}}
+                  </span>
+                <input
+                  autofocus
+                  (blur)="updateValue($event, 'full_name', rowIndex)"
+                  *ngIf="editing[rowIndex+ '-full_name']"
+                  type="text"
+                  [value]="value"
+                />
+              </ng-template>
+            </ngx-datatable-column>
+            <ngx-datatable-column name="טלפון" prop="phone_number">
+              <ng-template ngx-datatable-cell-template let-rowIndex="rowIndex" let-value="value" let-row="row">
+                  <span
+                    title="Double click to edit"
+                    (dblclick)="editing[rowIndex + '-phone_number'] = true"
+                    *ngIf="!editing[rowIndex + '-phone_number']">
+                    {{value}}
+                  </span>
+                <input
+                  autofocus
+                  (blur)="updateValue($event, 'phone_number', rowIndex)"
+                  *ngIf="editing[rowIndex+ '-phone_number']"
+                  type="text"
+                  [value]="value"
+                />
+              </ng-template>
+            </ngx-datatable-column>
+
+            <ngx-datatable-column name="אימייל" prop="email">
+              <ng-template ngx-datatable-cell-template let-rowIndex="rowIndex" let-value="value" let-row="row">
+                  <span
+                    title="Double click to edit"
+                    (dblclick)="editing[rowIndex + '-email'] = true"
+                    *ngIf="!editing[rowIndex + '-email']">
+                    {{value}}
+                  </span>
+                <input
+                  autofocus
+                  (blur)="updateValue($event, 'email', rowIndex)"
+                  *ngIf="editing[rowIndex+ '-email']"
+                  type="text"
+                  [value]="value"
+                />
+              </ng-template>
+            </ngx-datatable-column>
+            <!--ToDo add date picker-->
+            <ngx-datatable-column name="יום הולדת" prop="birthday">
+              <ng-template ngx-datatable-cell-template let-rowIndex="rowIndex" let-value="value" let-row="row">
+                  <span
+                    title="Double click to edit"
+                    (dblclick)="editing[rowIndex + '-birthday'] = true"
+                    *ngIf="!editing[rowIndex + '-birthday']">
+                    {{value}}
+                  </span>
+                <input
+                  autofocus
+                  (blur)="updateValue($event, 'birthday', rowIndex)"
+                  *ngIf="editing[rowIndex+ '-birthday']"
+                  type="text"
+                  [value]="value"/>
+              </ng-template>
+            </ngx-datatable-column>
+          </ngx-datatable>
+        </div>
+      </div>
+      <div class="col-sm-1">
+        <button md-fab color="accent" (click)="addClient()">+</button>
+      </div>
+    </div>
+
 </div>
