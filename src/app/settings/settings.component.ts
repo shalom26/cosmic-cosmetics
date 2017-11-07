@@ -11,6 +11,8 @@ export class SettingsComponent implements OnInit {
   public selectedBrand: IBrand;
   formGroup: FormGroup;
   designFormGroup: FormGroup;
+  public services = [];
+  public displayServiceName;
 
 
   constructor(private dataService: DataService,
@@ -19,6 +21,8 @@ export class SettingsComponent implements OnInit {
 
   ngOnInit() {
     this.selectedBrand = this.dataService.getSelectedBrand();
+
+
 
     this.formGroup = this.fb.group({
       email: ['', Validators.compose([Validators.required])],
@@ -41,6 +45,18 @@ export class SettingsComponent implements OnInit {
       primeService: []
     })
 
+    this.dataService.getServices().subscribe(servicesList => {
+      console.log(servicesList);
+
+      this.services = servicesList;
+
+      this.displayServiceName = this.services.filter(service=>{
+        return service.id = this.selectedBrand.design.prime_service_id;
+      })[0]
+    });
+
+
+
     this.designFormGroup
   }
 
@@ -51,5 +67,16 @@ export class SettingsComponent implements OnInit {
   onDesignFormSubmit() {
     this.dataService.updateBrandDesign(this.selectedBrand.design).subscribe();
   }
+
+  selectService(service, cell, rowIndex) {
+    let event = {target: {value:service}};
+    // this.selectedBrand.design.prime_service_id = service.id.$oid;
+    console.log(service);
+
+    this.displayServiceName = this.services.filter(service=>{
+      return service.id = this.selectedBrand.design.prime_service_id;
+    })[0]
+  }
+
 
 }
