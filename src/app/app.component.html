@@ -1,5 +1,5 @@
 <div>
-  <nav md-tab-nav-bar>
+  <nav md-tab-nav-bar *ngIf="isNavBar">
     <a md-tab-link
        *ngFor="let link of navLinks"
        [routerLink]="link.link"
