@@ -1,3 +1,5 @@
+@import "../../palette";
+
 .login-container{
   position: absolute;
   z-index: 100000;
@@ -145,7 +147,7 @@ input:focus ~ .highlight {
   margin: .3em 0 1em 0;
   width: 100%;
   vertical-align: middle;
-  color: #fff;
+  color: $base-light;
   font-size: 16px;
   line-height: 20px;
   -webkit-font-smoothing: antialiased;
@@ -153,7 +155,7 @@ input:focus ~ .highlight {
   letter-spacing: 1px;
   background: transparent;
   border: 0;
-  border-bottom: 2px solid #3160B6;
+  border-bottom: 2px solid $primary;
   cursor: pointer;
   transition: all 0.15s ease;
 }
@@ -163,11 +165,11 @@ input:focus ~ .highlight {
 /* Button modifiers */
 
 .buttonBlue {
-  background: #4a89dc;
+  background: $primary;
   text-shadow: 1px 1px 0 rgba(39, 110, 204, .5);
 }
 
-.buttonBlue:hover { background: #357bd8; }
+.buttonBlue:hover { background: $primary; }
 
 
 /* Ripples container */
@@ -194,7 +196,7 @@ input:focus ~ .highlight {
   width: 0;
   height: 0;
   border-radius: 50%;
-  background: rgba(255, 255, 255, 0.25);
+  background: $scondary;
 }
 
 .ripples.is-active .ripplesCircle {
